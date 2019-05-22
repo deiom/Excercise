@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class RageExpenses {
+
+     //10.	*Rage Expenses
+    //As a MOBA challenger player, Pesho has the bad habit to trash his PC when he loses a game and rage quits. His gaming setup consists of headset, mouse, keyboard and display. You will receive Pesho`s lost games count.
+    //Every second lost game, Pesho trashes his headset.
+    //Every third lost game, Pesho trashes his mouse.
+    //When Pesho trashes both his mouse and headset in the same lost game, he also trashes his keyboard.
+    //Every second time, when he trashes his keyboard, he also trashes his display.
+    //You will receive the price of each item in his gaming setup. Calculate his rage expenses for renewing his gaming equipment.
+    //Input / Constraints
+    //•	On the first input line - lost games count – integer in the range [0, 1000].
+    //•	On the second line – headset price - floating point number in range [0, 1000].
+    //•	On the third line – mouse price - floating point number in range [0, 1000].
+    //•	On the fourth line – keyboard price - floating point number in range [0, 1000].
+    //•	On the fifth line – display price - floating point number in range [0, 1000].
+    //Output
+    //•	As output you must print Pesho`s total expenses: "Rage expenses: {expenses} lv."
+    //•	Allowed working time / memory: 100ms / 16MB.
+    //Examples
+    //Input
+    //7
+    //2
+    //3
+    //4
+    //5
+    // Output: Rage expenses: 16.00 lv.
+    // Comments: Trashed headset -> 3 times
+    //Trashed mouse -> 2 times
+    //Trashed keyboard -> 1 time
+    //Total: 6 + 6 + 4 = 16.00 lv;
+    //Input
+    //23
+    //12.50
+    //21.50
+    //40
+    //200
+    // Comments: Rage expenses: 608.00 lv.
+
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int counter = Integer.parseInt(scanner.nextLine());
+        double headset = Double.parseDouble(scanner.nextLine());
+        double mouse = Double.parseDouble(scanner.nextLine());
+        double keyboard = Double.parseDouble(scanner.nextLine());
+        double display = Double.parseDouble(scanner.nextLine());
+        int headsetCounter=0;
+        int mouseCounter=0;
+        int keyboardCounter=0;
+        int dislayCounter=0;
+        double total=0;
+
+        for(int i = 1; i<=counter;i++) {
+            if (i % 2 == 0) {
+                headsetCounter++;
+            }
+            if (i % 3 == 0) {
+                mouseCounter++;
+            }
+            if (i % 6 == 0) {
+                keyboardCounter++;
+            }
+            if (i % 12 == 0) {
+                dislayCounter++;
+            }
+        }
+            total=headsetCounter*headset+mouseCounter*mouse+keyboardCounter*keyboard+dislayCounter*display;
+
+            System.out.printf("Rage expenses: %.2f lv.", total);
+    }
+    }
+
